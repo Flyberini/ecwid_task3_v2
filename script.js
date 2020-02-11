@@ -1,18 +1,24 @@
 // при первой загрузке страницы инициализируем функцию CartChaged
-function onLoad(){
-    Ecwid.OnAPILoaded.add(function() {
+function onLoaded(){
+    Ecwid.OnAPILoaded.add(function(page) {
+        console.log("onLoaded_1");
+        isFullCarAdded();
         CartChanged();
+        console.log("onLoaded_2");
     });
-};
-//при каждом изменеии корзины вызываем функцию(в т.ч. при первой загрузке), проверяющую "собранность машины"
+}
+//при каждом изменеии корзины вызываем функцию, проверяющую "собранность машины"
 function CartChanged(){
     Ecwid.OnCartChanged.add(function(cart){
+        console.log("CartChanged_1");
         isFullCarAdded();
+        console.log("CartChanged_2");
     });
 };
 // в зависимости от колличества товаров в корзине (элементов в массиве cart) меняем статус отображения на противоположный у пары изображение-текст 
 function isFullCarAdded() {
     Ecwid.Cart.get(function(cart){
+        console.log("isFullCarAdded");
         if (cart.items.length >=5 ) {
             car_image.style . display= "none";
             car_text.style . display = "block";
