@@ -1,0 +1,11 @@
+.area {
+    outline-color:gray;
+}
+.image {
+    display: none;
+}
+.text {
+    display: none;
+    margin-top: 250px;
+    margin-left: 400px;
+}
